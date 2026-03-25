@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
 // Import individual route modules
-const booksRoutes = require('./books');
-const contactsRoutes = require('./contacts');
+const booksRoutes = require('./bookRoute');
+const contactsRoutes = require('./contactRoute');
 
 // Mount the routes
 router.use('/books', booksRoutes);
