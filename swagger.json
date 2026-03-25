@@ -2,166 +2,112 @@
   "swagger": "2.0",
   "info": {
     "title": "Books & Contacts API",
-    "description": "API for managing books and contacts collections",
+    "description": "API documentation for managing Books and Contacts collections",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
   "basePath": "/",
-  "schemes": ["http"],
   "paths": {
     "/books": {
       "get": {
         "tags": ["Books"],
-        "summary": "Get all books",
-        "responses": {
-          "200": { "description": "List of all books" },
-          "500": { "description": "Internal Server Error" }
-        }
+        "responses": { "200": { "description": "OK" }, "500": { "description": "Server Error" } }
       },
       "post": {
         "tags": ["Books"],
-        "summary": "Create a new book",
         "parameters": [
           {
+            "name": "body",
             "in": "body",
-            "name": "book",
-            "description": "Book object to create",
             "required": true,
-            "schema": { "$ref": "#/definitions/Book" }
+            "schema": { "$ref": "#/components/schemas/Book" }
           }
         ],
-        "responses": {
-          "201": { "description": "Book created" },
-          "400": { "description": "Invalid input" }
-        }
+        "responses": { "201": { "description": "Created" }, "400": { "description": "Bad Request" } }
       }
     },
     "/books/{id}": {
       "get": {
         "tags": ["Books"],
-        "summary": "Get a single book by ID",
-        "parameters": [
-          { "name": "id", "in": "path", "required": true, "type": "string" }
-        ],
-        "responses": {
-          "200": { "description": "Single book object" },
-          "404": { "description": "Book not found" },
-          "500": { "description": "Internal Server Error" }
-        }
+        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "string" }],
+        "responses": { "200": { "description": "OK" }, "404": { "description": "Not Found" } }
       },
       "put": {
         "tags": ["Books"],
-        "summary": "Update a book by ID",
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" },
-          { "in": "body", "name": "book", "required": true, "schema": { "$ref": "#/definitions/Book" } }
+          { "name": "body", "in": "body", "required": true, "schema": { "$ref": "#/components/schemas/Book" } }
         ],
-        "responses": {
-          "200": { "description": "Book updated" },
-          "400": { "description": "Invalid input" },
-          "404": { "description": "Book not found" }
-        }
+        "responses": { "200": { "description": "Updated" }, "400": { "description": "Bad Request" }, "404": { "description": "Not Found" } }
       },
       "delete": {
         "tags": ["Books"],
-        "summary": "Delete a book by ID",
-        "parameters": [
-          { "name": "id", "in": "path", "required": true, "type": "string" }
-        ],
-        "responses": {
-          "200": { "description": "Book deleted" },
-          "404": { "description": "Book not found" },
-          "500": { "description": "Internal Server Error" }
-        }
+        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "string" }],
+        "responses": { "200": { "description": "Deleted" }, "404": { "description": "Not Found" } }
       }
     },
     "/contacts": {
       "get": {
         "tags": ["Contacts"],
-        "summary": "Get all contacts",
-        "responses": {
-          "200": { "description": "List of all contacts" },
-          "500": { "description": "Internal Server Error" }
-        }
+        "responses": { "200": { "description": "OK" }, "500": { "description": "Server Error" } }
       },
       "post": {
         "tags": ["Contacts"],
-        "summary": "Create a new contact",
         "parameters": [
           {
+            "name": "body",
             "in": "body",
-            "name": "contact",
-            "description": "Contact object to create",
             "required": true,
-            "schema": { "$ref": "#/definitions/Contact" }
+            "schema": { "$ref": "#/components/schemas/Contact" }
           }
         ],
-        "responses": {
-          "201": { "description": "Contact created" },
-          "400": { "description": "Invalid input" }
-        }
+        "responses": { "201": { "description": "Created" }, "400": { "description": "Bad Request" } }
       }
     },
     "/contacts/{id}": {
       "get": {
         "tags": ["Contacts"],
-        "summary": "Get a single contact by ID",
-        "parameters": [
-          { "name": "id", "in": "path", "required": true, "type": "string" }
-        ],
-        "responses": {
-          "200": { "description": "Single contact object" },
-          "404": { "description": "Contact not found" },
-          "500": { "description": "Internal Server Error" }
-        }
+        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "string" }],
+        "responses": { "200": { "description": "OK" }, "404": { "description": "Not Found" } }
       },
       "put": {
         "tags": ["Contacts"],
-        "summary": "Update a contact by ID",
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" },
-          { "in": "body", "name": "contact", "required": true, "schema": { "$ref": "#/definitions/Contact" } }
+          { "name": "body", "in": "body", "required": true, "schema": { "$ref": "#/components/schemas/Contact" } }
         ],
-        "responses": {
-          "200": { "description": "Contact updated" },
-          "400": { "description": "Invalid input" },
-          "404": { "description": "Contact not found" }
-        }
+        "responses": { "200": { "description": "Updated" }, "400": { "description": "Bad Request" }, "404": { "description": "Not Found" } }
       },
       "delete": {
         "tags": ["Contacts"],
-        "summary": "Delete a contact by ID",
-        "parameters": [
-          { "name": "id", "in": "path", "required": true, "type": "string" }
-        ],
-        "responses": {
-          "200": { "description": "Contact deleted" },
-          "404": { "description": "Contact not found" },
-          "500": { "description": "Internal Server Error" }
-        }
+        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "string" }],
+        "responses": { "200": { "description": "Deleted" }, "404": { "description": "Not Found" } }
       }
     }
   },
-  "definitions": {
-    "Book": {
-      "type": "object",
-      "required": ["title", "author", "genre", "year"],
-      "properties": {
-        "title": { "type": "string", "example": "The Great Gatsby" },
-        "author": { "type": "string", "example": "F. Scott Fitzgerald" },
-        "genre": { "type": "string", "example": "Classic" },
-        "year": { "type": "integer", "example": 1925 }
-      }
-    },
-    "Contact": {
-      "type": "object",
-      "required": ["firstName", "lastName", "email", "favoriteColor", "birthday"],
-      "properties": {
-        "firstName": { "type": "string", "example": "John" },
-        "lastName": { "type": "string", "example": "Doe" },
-        "email": { "type": "string", "example": "john@example.com" },
-        "favoriteColor": { "type": "string", "example": "Blue" },
-        "birthday": { "type": "string", "format": "date", "example": "1990-01-01" }
+  "components": {
+    "schemas": {
+      "Book": {
+        "type": "object",
+        "required": ["title", "author", "genre", "publishedYear", "rating"],
+        "properties": {
+          "title": { "type": "string", "example": "To Kill a Mockingbird" },
+          "author": { "type": "string", "example": "Harper Lee" },
+          "genre": { "type": "string", "example": "Fiction" },
+          "publishedYear": { "type": "integer", "example": 1960 },
+          "pages": { "type": "integer", "example": 281 },
+          "rating": { "type": "number", "format": "float", "example": 4.8 }
+        }
+      },
+      "Contact": {
+        "type": "object",
+        "required": ["firstName", "lastName", "email", "favoriteColor", "birthday"],
+        "properties": {
+          "firstName": { "type": "string", "example": "John" },
+          "lastName": { "type": "string", "example": "Doe" },
+          "email": { "type": "string", "example": "john@example.com" },
+          "favoriteColor": { "type": "string", "example": "Blue" },
+          "birthday": { "type": "string", "format": "date", "example": "1990-01-01" }
+        }
       }
     }
   }
