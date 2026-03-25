@@ -5,7 +5,7 @@ const doc = {
     title: 'Books & Contacts API',
     description: 'API for managing books and contacts collections'
   },
-  host: process.env.RENDER_EXTERNAL_HOSTNAME || 'localhost:6000',
+  host: process.env.RENDER_EXTERNAL_HOSTNAME || 'localhost:3000',
   schemes: process.env.RENDER_EXTERNAL_HOSTNAME ? ['https'] : ['http']
 };
 
