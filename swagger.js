@@ -10,8 +10,8 @@ const doc = {
 };
 
 const outputFile = './swagger.json';
-const endpointsFiles = ['./routes/books.js', './routes/contacts.js'];
+const endpointsFiles = ['./routes/bookRoute.js', './routes/contactRoute.js'];
 
-swaggerAutogen(outputFile, endpointsFiles, doc).then(()=>{
-    console.log('Swagger documentation created!')
+swaggerAutogen(outputFile, endpointsFiles, doc).then((doc)=>{
+    doc?console.log('Swagger documentation created!'):console.log('Swagger documentation failed!')
 });
