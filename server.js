@@ -4,7 +4,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const errorHandler = require('./middleware/errorHandler');
 const notFound = require('./middleware/notFound');
-const { promiseAndUncaught_funct } = require('./utils')
+const promiseAndUncaught_funct  = require('./utils')
 require('dotenv').config();
 
 //Handle global error handlers  : Unhandled Promise Rejections & Uncaught Exceptions
