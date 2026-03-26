@@ -4,7 +4,11 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const errorHandler = require('./middleware/errorHandler');
 const notFound = require('./middleware/notFound');
+const { promiseAndUncaught_funct } = require('./utils')
 require('dotenv').config();
+
+//Handle global error handlers  : Unhandled Promise Rejections & Uncaught Exceptions
+promiseAndUncaught_funct();
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -17,7 +21,7 @@ app.use('/', require('./routes'));
 // Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// 404 & error handler
+// error handlers
 app.use(notFound);
 app.use(errorHandler);
 
