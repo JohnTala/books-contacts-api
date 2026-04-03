@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const contactController = require('../controllers/contactController');
 const { validateContactRules, validateContact } = require('../middleware/validateContacts');
-const isAuthenticated = require('../middleware/isAuthenticated'); // <-- added authentication middleware
+const isAuthenticated = require('../middleware/isAuthenticated'); 
 
 // --------------------
 // Routes with Swagger comments

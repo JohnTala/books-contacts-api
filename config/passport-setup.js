@@ -11,7 +11,7 @@ passport.use(
       callbackURL: process.env.GITHUB_CALLBACK_URL, // dynamic callback URL
     },
     (accessToken, refreshToken, profile, done) => {
-      // For demo, just return profile. In production, save user to DB here.
+     
       return done(null, profile);
     }
   )

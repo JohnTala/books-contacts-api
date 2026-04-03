@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const bookController = require('../controllers/bookController');
 const { validateBookRules, validateBook } = require('../middleware/validateBooks');
-const isAuthenticated = require('../middleware/isAuthenticated'); // <-- added authentication middleware
+const isAuthenticated = require('../middleware/isAuthenticated'); 
 
 // --------------------
 // Routes with Swagger comments
