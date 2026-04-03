@@ -37,7 +37,12 @@ const doc = {
 };
 
 const outputFile = './swagger.json';
-const endpointsFiles = ['./routes/index.js', './routes/bookRoute.js', './routes/contactRoute.js'];
+const endpointsFiles = endpointsFiles = [
+  './routes/index.js',
+  './routes/bookRoute.js',
+  './routes/contactRoute.js',
+  './routes/oAuth-Route.js' // Include OAuth routes for full docs
+];
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
   console.log('Swagger documentation generated successfully!');

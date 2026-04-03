@@ -82,6 +82,30 @@
         "parameters": [{ "name": "id", "in": "path", "required": true, "type": "string" }],
         "responses": { "200": { "description": "Deleted" }, "404": { "description": "Not Found" } }
       }
+    },
+    "/auth/github": {
+      "get": {
+        "tags": ["Auth"],
+        "responses": { "200": { "description": "Redirects to GitHub login" } }
+      }
+    },
+    "/auth/github/redirect": {
+      "get": {
+        "tags": ["Auth"],
+        "responses": { "200": { "description": "OAuth callback from GitHub" } }
+      }
+    },
+    "/auth/logout": {
+      "get": {
+        "tags": ["Auth"],
+        "responses": { "200": { "description": "User logged out" } }
+      }
+    },
+    "/auth/profile": {
+      "get": {
+        "tags": ["Auth"],
+        "responses": { "200": { "description": "Returns current authenticated user" } }
+      }
     }
   },
   "components": {

@@ -6,7 +6,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: '/auth/github/callback'
+      callbackURL: '/auth/github/redirect'
     },
     (accessToken, refreshToken, profile, done) => {
       // You could save user to DB here if needed

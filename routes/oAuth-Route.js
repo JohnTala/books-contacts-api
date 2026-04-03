@@ -43,10 +43,10 @@ router.get('/logout', (req, res) => {
 // Get current authenticated user
 /**
  * #swagger.tags = ['Auth']
- * #swagger.path = '/auth/me'
+ * #swagger.path = '/auth/profile'
  * #swagger.method = 'get'
  */
-router.get('/me', (req, res) => {
+router.get('/profile', (req, res) => {
   res.json(req.user || null);
 });
 
