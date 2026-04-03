@@ -8,7 +8,8 @@ const book_schema = new Schema({
   publishedYear: { type: Date, required: true },
   pages: { type: Number },
   rating: { type: Number },
-  publisher: { type: String }       
+  publisher:{type: String,required:true}
+      
 });
 
 module.exports=model('Book',book_schema)

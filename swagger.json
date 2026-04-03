@@ -2,136 +2,241 @@
   "swagger": "2.0",
   "info": {
     "title": "Books & Contacts API",
-    "description": "API documentation for managing Books and Contacts collections",
+    "description": "API documentation for managing Books, Contacts, and OAuth authentication (GitHub)",
     "version": "1.0.0"
   },
+  "host": "localhost:3000",
   "basePath": "/",
+  "schemes": ["http", "https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+
   "paths": {
     "/books": {
       "get": {
         "tags": ["Books"],
-        "responses": { "200": { "description": "OK" }, "500": { "description": "Server Error" } }
+        "summary": "Get all books",
+        "responses": {
+          "200": { "description": "OK" },
+          "500": { "description": "Server Error" }
+        }
       },
       "post": {
         "tags": ["Books"],
+        "summary": "Create a new book",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "required": true,
-            "schema": { "$ref": "#/components/schemas/Book" }
+            "schema": { "$ref": "#/definitions/Book" }
           }
         ],
-        "responses": { "201": { "description": "Created" }, "400": { "description": "Bad Request" } }
+        "responses": {
+          "201": { "description": "Created" },
+          "400": { "description": "Bad Request" },
+          "500": { "description": "Server Error" }
+        }
       }
     },
+
     "/books/{id}": {
       "get": {
         "tags": ["Books"],
-        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "string" }],
-        "responses": { "200": { "description": "OK" }, "404": { "description": "Not Found" } }
+        "summary": "Get a single book by ID",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "OK" },
+          "404": { "description": "Not Found" },
+          "500": { "description": "Server Error" }
+        }
       },
       "put": {
         "tags": ["Books"],
+        "summary": "Update a book by ID",
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" },
-          { "name": "body", "in": "body", "required": true, "schema": { "$ref": "#/components/schemas/Book" } }
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Book" }
+          }
         ],
-        "responses": { "200": { "description": "Updated" }, "400": { "description": "Bad Request" }, "404": { "description": "Not Found" } }
+        "responses": {
+          "200": { "description": "Updated" },
+          "400": { "description": "Bad Request" },
+          "404": { "description": "Not Found" },
+          "500": { "description": "Server Error" }
+        }
       },
       "delete": {
         "tags": ["Books"],
-        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "string" }],
-        "responses": { "200": { "description": "Deleted" }, "404": { "description": "Not Found" } }
+        "summary": "Delete a book by ID",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "Deleted" },
+          "404": { "description": "Not Found" },
+          "500": { "description": "Server Error" }
+        }
       }
     },
+
     "/contacts": {
       "get": {
         "tags": ["Contacts"],
-        "responses": { "200": { "description": "OK" }, "500": { "description": "Server Error" } }
+        "summary": "Get all contacts",
+        "responses": {
+          "200": { "description": "OK" },
+          "500": { "description": "Server Error" }
+        }
       },
       "post": {
         "tags": ["Contacts"],
+        "summary": "Create a new contact",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "required": true,
-            "schema": { "$ref": "#/components/schemas/Contact" }
+            "schema": { "$ref": "#/definitions/Contact" }
           }
         ],
-        "responses": { "201": { "description": "Created" }, "400": { "description": "Bad Request" } }
+        "responses": {
+          "201": { "description": "Created" },
+          "400": { "description": "Bad Request" },
+          "500": { "description": "Server Error" }
+        }
       }
     },
+
     "/contacts/{id}": {
       "get": {
         "tags": ["Contacts"],
-        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "string" }],
-        "responses": { "200": { "description": "OK" }, "404": { "description": "Not Found" } }
+        "summary": "Get a single contact by ID",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "OK" },
+          "404": { "description": "Not Found" },
+          "500": { "description": "Server Error" }
+        }
       },
       "put": {
         "tags": ["Contacts"],
+        "summary": "Update a contact by ID",
         "parameters": [
           { "name": "id", "in": "path", "required": true, "type": "string" },
-          { "name": "body", "in": "body", "required": true, "schema": { "$ref": "#/components/schemas/Contact" } }
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Contact" }
+          }
         ],
-        "responses": { "200": { "description": "Updated" }, "400": { "description": "Bad Request" }, "404": { "description": "Not Found" } }
+        "responses": {
+          "200": { "description": "Updated" },
+          "400": { "description": "Bad Request" },
+          "404": { "description": "Not Found" },
+          "500": { "description": "Server Error" }
+        }
       },
       "delete": {
         "tags": ["Contacts"],
-        "parameters": [{ "name": "id", "in": "path", "required": true, "type": "string" }],
-        "responses": { "200": { "description": "Deleted" }, "404": { "description": "Not Found" } }
+        "summary": "Delete a contact by ID",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "Deleted" },
+          "404": { "description": "Not Found" },
+          "500": { "description": "Server Error" }
+        }
       }
     },
+
+    "/auth/": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "OAuth2 homepage",
+        "responses": {
+          "200": { "description": "Returns homepage HTML" }
+        }
+      }
+    },
+
     "/auth/github": {
       "get": {
         "tags": ["Auth"],
-        "responses": { "200": { "description": "Redirects to GitHub login" } }
+        "summary": "Initiate GitHub OAuth login",
+        "description": "Redirects the browser to GitHub login. Cannot be tested in Swagger UI.",
+        "responses": {
+          "302": { "description": "Redirect to GitHub login page" }
+        }
       }
     },
+
     "/auth/github/redirect": {
       "get": {
         "tags": ["Auth"],
-        "responses": { "200": { "description": "OAuth callback from GitHub" } }
+        "summary": "GitHub OAuth callback",
+        "responses": {
+          "302": { "description": "Redirect to /auth/profile after login" }
+        }
       }
     },
+
     "/auth/logout": {
       "get": {
         "tags": ["Auth"],
-        "responses": { "200": { "description": "User logged out" } }
+        "summary": "Logout user",
+        "responses": {
+          "302": { "description": "Redirect to homepage" }
+        }
       }
     },
+
     "/auth/profile": {
       "get": {
         "tags": ["Auth"],
-        "responses": { "200": { "description": "Returns current authenticated user" } }
+        "summary": "Get authenticated user",
+        "responses": {
+          "200": { "description": "User returned" },
+          "401": { "description": "Not authenticated" }
+        }
       }
     }
   },
-  "components": {
-    "schemas": {
-      "Book": {
-        "type": "object",
-        "required": ["title", "author", "genre", "publishedYear", "rating"],
-        "properties": {
-          "title": { "type": "string", "example": "To Kill a Mockingbird" },
-          "author": { "type": "string", "example": "Harper Lee" },
-          "genre": { "type": "string", "example": "Fiction" },
-          "publishedYear": { "type": "integer", "example": 1960 },
-          "pages": { "type": "integer", "example": 281 },
-          "rating": { "type": "number", "format": "float", "example": 4.8 }
-        }
-      },
-      "Contact": {
-        "type": "object",
-        "required": ["firstName", "lastName", "email", "favoriteColor", "birthday"],
-        "properties": {
-          "firstName": { "type": "string", "example": "John" },
-          "lastName": { "type": "string", "example": "Doe" },
-          "email": { "type": "string", "example": "john@example.com" },
-          "favoriteColor": { "type": "string", "example": "Blue" },
-          "birthday": { "type": "string", "format": "date", "example": "1990-01-01" }
-        }
+
+  "definitions": {
+    "Book": {
+      "type": "object",
+      "required": ["title", "author", "genre", "publishedYear", "rating", "publisher"],
+      "properties": {
+        "title": { "type": "string", "example": "To Kill a Mockingbird" },
+        "author": { "type": "string", "example": "Harper Lee" },
+        "genre": { "type": "string", "example": "Fiction" },
+        "publishedYear": { "type": "integer", "example": 1960 },
+        "pages": { "type": "integer", "example": 281 },
+        "rating": { "type": "number", "format": "float", "example": 4.8 },
+        "publisher": { "type": "string", "example": "Penguin Books" }
+      }
+    },
+
+    "Contact": {
+      "type": "object",
+      "required": ["firstName", "lastName", "email", "favoriteColor", "birthday"],
+      "properties": {
+        "firstName": { "type": "string", "example": "John" },
+        "lastName": { "type": "string", "example": "Doe" },
+        "email": { "type": "string", "example": "john@example.com" },
+        "favoriteColor": { "type": "string", "example": "Blue" },
+        "birthday": { "type": "string", "format": "date", "example": "1990-01-01" }
       }
     }
   }
